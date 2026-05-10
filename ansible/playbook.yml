@@ -3,15 +3,13 @@
   become: yes
   
   tasks:
-  
-  	- name: copy WAR file to tomcat
+    - name: copy WAR file to tomcat
   	  copy:
+  	      src: "/var/snap/jenkins/5022/workspace/MyAnsible/target/MyAnsible.war"
+  	      dest: "/opt/tomcat/webapps/MyAnsible.war"
+  	      remote_src: no
   	  
-  	  src: "/var/snap/jenkins/5022/workspace/MyAnsible/target/MyAnsible.war"
-  	  dest: "/opt/tomcat/webapps/MyAnsible.war"
-  	  remote_src: no
-  	  
-  	- name: Restart Tomcat Manually
+    - name: Restart Tomcat Manually
   	  shell: |
   	    /opt/tomcat/bin/shutdown.sh || true
   	    sleep 5
